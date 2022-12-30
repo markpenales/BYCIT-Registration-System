@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('first_name')->nullable(false);
             $table->string('middle_initial', 1)->nullable(true);
             $table->enum('type', ["Student", "Teacher"])->default("Student");
+            $table->unsignedBigInteger('college')->nullable(false);
+            $table->foreign('college')->references('id')->on('colleges');
             $table->timestamp("date_registered");
             $table->timestamps();
         });
