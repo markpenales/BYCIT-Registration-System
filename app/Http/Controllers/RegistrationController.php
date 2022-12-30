@@ -40,7 +40,8 @@ class RegistrationController extends Controller
             'last_name' => 'required',
             'first_name' => 'required',
             'type' => 'required',
-            'middle_initial' => 'max:1'
+            'middle_initial' => 'max:1',
+            'schools' => 'required'
         ]);
 
 
@@ -49,10 +50,11 @@ class RegistrationController extends Controller
         $newRegistration->first_name = $request->input('first_name');
         $newRegistration->middle_initial = $request->input('middle_initial');
         $newRegistration->type = $request->input('type');
+        $newRegistration->college = $request->input('schools');
         $newRegistration->save();
 
         
-        return redirect('register')->with('success', "Registration Successful!");
+        return redirect('/')->with('success', "Registration Successful!");
     }
 
     /**

@@ -9,13 +9,7 @@
 </head>
 
 <body>
-    @if (Route::has('login'))
-        @auth
-        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-        @else
-        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-        @endauth
-    @endif
+
 
     @if (Session::has('success'))
     Registration Complete!
@@ -39,6 +33,15 @@
         <label for="student">Student</label>
         <input type="radio" name="type" value="Teacher" id="teacher">
         <label for="teacher">Teacher</label><br>
+        
+        <label for="schools">
+            <select name="schools" id="schools">
+                <option value="" disabled selected>School</option>
+                @foreach (\App\Models\College::all() as $college)
+                    <option value="{{$college->id}}"> {{$college->name}} </option>
+                @endforeach
+            </select>
+        </label>
         <input type="submit">
     </form>
 </body>
