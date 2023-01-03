@@ -9,6 +9,8 @@ body {
     background-image: url('../images/background.png');
     margin-left: 200px;
     margin-top: 75px;
+    background-size: auto;
+    background-repeat: no-repeat;
 }
 
 
@@ -70,17 +72,15 @@ body {
 
 /* Body */
 .title {
-    padding-top: 13%;
+    padding-top: 10%;
     font-size: 40px;
     font-weight: bold;
     margin-bottom: 30px;
 }
 
-
-
 .form-group .name input[type="text"] {
     width: 175px;
-    border: 0px solid black;
+    border: none;
     border-radius: 10px;
     padding: 15px;
     margin-right: 5px;
@@ -155,3 +155,102 @@ body {
 
 }
 
+.errors{
+    margin-top: 10px;
+}
+
+
+@media only screen and (max-width: 1024px){
+    body{
+        margin-left: 20%;
+    }
+
+    .title{
+        padding-top: 25%;
+        font-size: 30px;
+    }
+
+    .navigation .logo-container{
+        margin-right: 3%;
+    }
+    .navigation .logo-container .jpcs{
+        font-size: 15px;
+    }
+
+    .navigation ul li a{
+        font-size: 15px;
+        margin-left: 0;
+    }
+
+    .form-group .name input[type="text"]{
+    
+        width: 20%;
+        padding: 15px;
+    }
+    .form-group .school #schools{
+        width: 90%;
+    }
+
+
+    
+}
+@media only screen and (max-width: 480px){
+    body{
+        margin-left: 20px;
+        font-size: 100%;
+    }
+
+    .navigation .logo-container{
+        margin-right: 20px;
+    }
+
+    .navigation .logo-container .logo{
+        width: 30px;
+    }
+
+    .navigation .logo-container .jpcs{
+        font-size: 0.67em;
+    }
+    .navigation ul{
+        padding-top: 13px;
+        margin-left: 0px;
+    }
+    .navigation ul li a{
+        font-size: 0.67em;
+
+    }
+
+    .title{
+        margin: 0;
+        padding: 0;
+        padding-top: 50%;
+        font-size: 0.67em;
+    }
+
+    .form-group .name input[type="text"]{
+        padding: 8px;
+        width: 25%;
+        margin-top: 5px;
+        font-size: 0.67em;
+    }
+
+    .form-group .school #schools{
+        width: 95%;
+        padding: 8px;
+        font-size: 0.67em;
+    }
+
+    .form-group .type input[type="radio"]{
+        width: 13px;
+        height: 13px;
+    }
+    .form-group .type label{
+        font-size: 0.67em;
+    }
+
+    .form-group button{
+        padding: 3% 0;
+        width: 30%;
+        font-size: 0.67em;
+    }
+}

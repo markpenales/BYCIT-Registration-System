@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYCIT Registration</title>
+    <link rel="icon" href="{{asset('images/JPCS.png')}}" type="image/png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,23 +37,17 @@
     Registration Complete!
     @endif
 
-    @if ($errors->any())
-    @foreach ($errors->all() as $error)
-    {{ $error }} <br>
-    @endforeach
-    @endif
     <form action="" method="POST">
         {{ csrf_field() }}
-        <p class="title">BYCIT Registration</p>
+        <p class="title">BYCIT Registration</p><br>
         <div class="form-group">
             <div class="name">
-                <input type="text" name="last_name" id="last_name" required placeholder="Last Name">
-                <input type="text" name="first_name" id="first_name" required placeholder="First Name">
-                <input type="text" name="middle_initial" id="middle_initial" placeholder="Middle Initial">
+                <input type="text" name="last_name" id="last_name" style="{{$errors->first('last_name') ? 'border: 2px solid red' : ''}}" placeholder="Last Name">
+                <input type="text" name="first_name" id="first_name" style="{{$errors->first('first_name') ? 'border: 2px solid red' : ''}}" placeholder="First Name">
+                <input type="text" name="middle_initial" id="middle_initial" style="{{$errors->first('middle_initial') ? 'border: 2px solid red' : ''}}" placeholder="Middle Initial">
             </div>
-
             <div class="school">
-                <select name="schools" id="schools">
+                <select name="schools" id="schools" style="{{$errors->first('schools') ? 'border: 2px solid red' : ''}}">
                     <option value="" disabled selected>School</option>
                     @foreach (\App\Models\College::all() as $college)
                     <option value="{{$college->id}}"> {{$college->name}} </option>
@@ -66,6 +61,13 @@
                 <label for="teacher">Teacher</label>
             </div>
 
+            <div class="errors">
+            @if ($errors->any())
+                @foreach($errors->all() as $error)
+                <p class="err">{{$error}}</p>
+                @endforeach
+            @endif
+            </div>
             <button type="submit" class="">Register</button>
         </div>
 
