@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
-use App\Models\College;
-
+use App\Models\Registration;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +21,26 @@ Route::get('/', function () {
 });
 
 Route::post('/', [RegistrationController::class, 'store']);
+
+Route::get('/registrations/bycit', function (Request $request) {
+    if ($request->delete) {
+        $id = $request->delete;
+        $exists = Registration::find($id);
+        if ($exists) {
+            $exists->delete();
+        }
+
+        return redirect('/registrations/bycit');
+    } else if ($request->confirm) {
+        $id = $request->confirm;
+        $exists = Registration::find($id);
+
+        if ($exists) {
+            $exists->confirmed = !($exists->confirmed);
+            $exists->save();
+
+        }
+        return redirect('/registrations/bycit');
+    }
+    return view('dashboard');
+});

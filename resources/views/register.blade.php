@@ -20,27 +20,26 @@
 </head>
 
 <body>
-
-
+    <!-- TODO: Make the navbar a separate template and use it in about.blade and register.blade -->
+    <!-- Navigation -->
     <div class="navigation">
         <div class="logo-container child">
             <img src="{{asset('images/JPCS.png')}}" class="logo">
-            <a href="" class="jpcs">JPCS - CSPC Chapter</a>
+            <a href="/" class="jpcs">JPCS - CSPC Chapter</a>
         </div>
-        <ul class="child">
-            <li><a href="">About</a></li>
-            <li><a href="">Register</a></li>
-        </ul>
     </div>
 
-    @if (Session::has('success'))
-    Registration Complete!
-    @endif
+
 
     <form action="" method="POST">
         {{ csrf_field() }}
         <p class="title">BYCIT Registration</p><br>
         <div class="form-group">
+            @if (Session::has('success'))
+            <p class="success">Registration Successful!</p>
+            @endif
+
+
             <div class="name">
                 <input type="text" name="last_name" id="last_name" style="{{$errors->first('last_name') ? 'border: 2px solid red' : ''}}" placeholder="Last Name">
                 <input type="text" name="first_name" id="first_name" style="{{$errors->first('first_name') ? 'border: 2px solid red' : ''}}" placeholder="First Name">
@@ -62,11 +61,11 @@
             </div>
 
             <div class="errors">
-            @if ($errors->any())
+                @if ($errors->any())
                 @foreach($errors->all() as $error)
                 <p class="err">{{$error}}</p>
                 @endforeach
-            @endif
+                @endif
             </div>
             <button type="submit" class="">Register</button>
         </div>

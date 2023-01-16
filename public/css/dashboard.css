@@ -1,0 +1,75 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Montserrat';
+    color: white;
+    background-image: url('../images/background.png');
+    margin-left: 200px;
+    margin-top: 75px;
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+
+.title {
+    font-size: 40px;
+    margin-bottom: 30px;
+    padding-top: 150px;
+}
+
+table,
+th,
+td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+
+
+th {
+    padding: 20px;
+    text-align: left;
+}
+
+th a{
+    color: white;
+}
+
+th a:hover{
+    color: purple;
+}
+
+
+.navigation {
+    width: 100%;
+}
+
+.navigation .child {
+    float: left;
+}
+
+.navigation .logo-container {
+    display: flex;
+    align-items: center;
+    margin-right: 100px;
+}
+
+.navigation .logo-container .logo {
+    width: 45px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+
+.navigation .logo-container .jpcs {
+    padding-top: 10px;
+    font-size: 24px;
+
+}
+
+.navigation a {
+    text-decoration: none;
+    color: white;
+}

@@ -40,11 +40,11 @@ class RegistrationController extends Controller
             'last_name' => 'required',
             'first_name' => 'required',
             'type' => 'required',
-            'middle_initial' => 'max:1',
+            'middle_initial' => 'max:2',
             'schools' => 'required'
         ]);
 
-
+        // TODO: Validate if middle initial has any other symbols, remove those symbols and make the max width 2 letters
         $newRegistration = new Registration;
         $newRegistration->last_name = $request->input('last_name');
         $newRegistration->first_name = $request->input('first_name');

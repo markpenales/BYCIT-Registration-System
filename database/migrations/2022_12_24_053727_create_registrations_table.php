@@ -21,6 +21,7 @@ return new class extends Migration
             $table->enum('type', ["Student", "Teacher"])->default("Student");
             $table->unsignedBigInteger('college')->nullable(false);
             $table->foreign('college')->references('id')->on('colleges');
+            $table->boolean('confirmed')->default(false);
             $table->timestamp("date_registered");
             $table->timestamps();
         });
