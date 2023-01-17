@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\College;
 use Illuminate\Http\Request;
 use App\Models\Registration;
+use Illuminate\Validation\Rule;
 
 class RegistrationController extends Controller
 {
@@ -36,15 +38,17 @@ class RegistrationController extends Controller
      */
     public function store(Request $request)
     {
+        $types = ["Teacher", "Student"];
+        $schoolIDs = [1, 2, 3, 4, 5, 6];
+        
         $this->validate($request, [
-            'last_name' => 'required',
-            'first_name' => 'required',
-            'type' => 'required',
-            'middle_initial' => 'max:2',
-            'schools' => 'required'
+            'last_name' => 'required|alpha',
+            'first_name' => 'required|alpha',
+            'type' => ['required', Rule::in($types)],
+            'middle_initial' => 'max:2|alpha',
+            'schools' => ['required', Rule::in($schoolIDs)]
         ]);
 
-        // TODO: Validate if middle initial has any other symbols, remove those symbols and make the max width 2 letters
         $newRegistration = new Registration;
         $newRegistration->last_name = $request->input('last_name');
         $newRegistration->first_name = $request->input('first_name');
