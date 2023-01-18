@@ -27,6 +27,16 @@
             <img src="{{asset('images/JPCS.png')}}" class="logo">
             <a href="/" class="jpcs">JPCS - CSPC Chapter</a>
         </div>
+        <div class="links child ">
+            <ul>
+                <li>
+                    <a href="/">Single Registration</a>
+                </li>
+                <li>
+                    <a href="/multi">Multiple Registrations</a>
+                </li>
+            </ul>
+        </div>
     </div>
 
 
@@ -63,7 +73,7 @@
             <div class="errors">
                 @if ($errors->any())
                 @foreach($errors->all() as $error)
-                <p class="err">{{$error}}</p>
+                <p class="err">{{ucwords($error)}}</p>
                 @endforeach
                 @endif
             </div>

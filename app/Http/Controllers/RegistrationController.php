@@ -6,6 +6,7 @@ use App\Models\College;
 use Illuminate\Http\Request;
 use App\Models\Registration;
 use Illuminate\Validation\Rule;
+use App\Rules\EmptyOrAlpha;
 
 class RegistrationController extends Controller
 {
@@ -42,17 +43,18 @@ class RegistrationController extends Controller
         $schoolIDs = [1, 2, 3, 4, 5, 6];
         
         $this->validate($request, [
-            'last_name' => 'required|alpha',
-            'first_name' => 'required|alpha',
+            'last_name' => 'required|max:255|regex:/^[a-zA-ZÑñ\s]+$/',
+            'first_name' => 'required|max:255|regex:/^[a-zA-ZÑñ\s]+$/',
             'type' => ['required', Rule::in($types)],
-            'middle_initial' => 'max:2|alpha',
+            'middle_initial' => ['max:2', new EmptyOrAlpha],
             'schools' => ['required', Rule::in($schoolIDs)]
         ]);
 
+
         $newRegistration = new Registration;
-        $newRegistration->last_name = $request->input('last_name');
-        $newRegistration->first_name = $request->input('first_name');
-        $newRegistration->middle_initial = $request->input('middle_initial');
+        $newRegistration->last_name = ucwords(strtolower($request->input('last_name')));
+        $newRegistration->first_name = ucwords(strtolower($request->input('first_name')));
+        $newRegistration->middle_initial = ucwords(strtolower($request->input('middle_initial')));
         $newRegistration->type = $request->input('type');
         $newRegistration->college = $request->input('schools');
         $newRegistration->save();

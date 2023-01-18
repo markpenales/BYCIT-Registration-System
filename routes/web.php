@@ -22,6 +22,10 @@ Route::get('/', function () {
 
 Route::post('/', [RegistrationController::class, 'store']);
 
+Route::get('/multi', function () {
+    return view('multi-register');
+});
+
 Route::get('/registrations/bycit', function (Request $request) {
     if ($request->delete) {
         $id = $request->delete;
